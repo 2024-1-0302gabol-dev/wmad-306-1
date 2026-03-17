@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/my_1st_flutter_app_balubar.iml" filepath="$PROJECT_DIR$/my_1st_flutter_app_balubar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/my_1st_flutter_app_balubar_android.iml" filepath="$PROJECT_DIR$/android/my_1st_flutter_app_balubar_android.iml" />
+    </modules>
+  </component>
+</project>
