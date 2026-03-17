@@ -9,6 +9,7 @@ export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
+        role: 'student',
         password: '',
         password_confirmation: '',
     });
@@ -24,6 +25,11 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Register" />
+
+            <div className="mb-6">
+                <h2 className="text-2xl font-bold text-slate-900">Create account</h2>
+                <p className="mt-1 text-sm text-slate-500">Choose your role and start publishing or reading.</p>
+            </div>
 
             <form onSubmit={submit}>
                 <div>
@@ -61,6 +67,37 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
+                    <InputLabel htmlFor="role" value="Choose Role" />
+                    <div className="mt-2 grid grid-cols-2 gap-3">
+                        <button
+                            type="button"
+                            onClick={() => setData('role', 'student')}
+                            className={`rounded-lg border px-3 py-3 text-left transition ${
+                                data.role === 'student'
+                                    ? 'border-emerald-400 bg-emerald-50 shadow'
+                                    : 'border-slate-200 bg-white hover:border-emerald-300'
+                            }`}
+                        >
+                            <p className="font-semibold text-slate-800">Student</p>
+                            <p className="text-xs text-slate-500">Instant access, no approval needed.</p>
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setData('role', 'writer')}
+                            className={`rounded-lg border px-3 py-3 text-left transition ${
+                                data.role === 'writer'
+                                    ? 'border-amber-400 bg-amber-50 shadow'
+                                    : 'border-slate-200 bg-white hover:border-amber-300'
+                            }`}
+                        >
+                            <p className="font-semibold text-slate-800">Writer</p>
+                            <p className="text-xs text-slate-500">Needs admin approval before posting.</p>
+                        </button>
+                    </div>
+                    <InputError message={errors.role} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
@@ -78,10 +115,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                    />
+                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
 
                     <TextInput
                         id="password_confirmation"
@@ -90,27 +124,22 @@ export default function Register() {
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
-                        onChange={(e) =>
-                            setData('password_confirmation', e.target.value)
-                        }
+                        onChange={(e) => setData('password_confirmation', e.target.value)}
                         required
                     />
 
-                    <InputError
-                        message={errors.password_confirmation}
-                        className="mt-2"
-                    />
+                    <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
+                <div className="mt-5 flex items-center justify-between">
                     <Link
                         href={route('login')}
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="rounded-md text-sm text-slate-600 underline hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                     >
                         Already registered?
                     </Link>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <PrimaryButton className="ms-4 bg-slate-900 hover:bg-slate-700" disabled={processing}>
                         Register
                     </PrimaryButton>
                 </div>
