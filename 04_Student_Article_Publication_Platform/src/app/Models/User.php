@@ -4,17 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
-
-    protected $guard_name = 'web';
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,9 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_approved',
-        'writer_application_reason',
-        'writer_application_submitted_at',
     ];
 
     /**
@@ -40,25 +33,16 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-        'is_approved' => 'boolean',
-        'writer_application_submitted_at' => 'datetime',
-    ];
-
-    public function articles(): HasMany
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
     {
-        return $this->hasMany(Article::class);
-    }
-
-    public function comments(): HasMany
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function isAdmin(): bool
-    {
-        return $this->hasRole('admin');
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }
