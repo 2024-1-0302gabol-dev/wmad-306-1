@@ -29,3 +29,12 @@
 
 *End commit reference: https://github.com/evadonardem/wmad-306-1/commit/7445d7ec3604a12a44450bb13b96a0bf0865bfd9*
 
+---
+
+## Late 6+ Days (-40%)
+
+1. Bankin https://github.com/evadonardem/wmad-306-1/commit/3ff25c3beb509bb29d481ed2c1240194c163f87e
+
+---
+
+*End commit reference: https://github.com/evadonardem/wmad-306-1/commit/3baaf99c41ed41ecc88b974084b1ddbc16ea726f*
