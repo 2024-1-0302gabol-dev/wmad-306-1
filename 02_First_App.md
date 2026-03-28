@@ -67,6 +67,15 @@
     | Total Points: | 25 |
     | Less -40%: | 15 | 
 
+8. Rivera https://github.com/evadonardem/wmad-306-1/commit/91109a8c55187e816927cd8b3505612a034a23f1
+
+    | Action Item | Points |
+    | ----------- | ----------- |
+    | User Seeder Through Factories | 12.5 |
+    | Display Users Using InteriaJS + React Component | 12.5 |
+    | Total Points: | 25 |
+    | Less -40%: | 15 | 
+
 ---
 
-*End commit reference: https://github.com/evadonardem/wmad-306-1/commit/635262cf2a02a0a61781d3ec34071d4ab73d8a59*
+*End commit reference: https://github.com/evadonardem/wmad-306-1/commit/fd5a882c8cd4411d43cf5be558643ba427063539*
