@@ -18,10 +18,29 @@ class DogApiService {
 
     return message.entries
         .map(
-          (e) =>
-              Breed(name: e.key, subBreeds: List<String>.from(e.value as List)),
+          (e) => Breed(
+            name: e.key, 
+            subBreeds: List<String>.from(e.value as List)
+          ),
         )
         .toList()
       ..sort((a, b) => a.name.compareTo(b.name));
+  }
+
+  Future<String> fetchRandomImage(String breedPath) async {
+    final uri = Uri.parse('$_base/breed/$breedPath/images/random');
+    final response = await http.get(uri);
+
+    if (response.statusCode != 200) {
+      throw Exception('Failed to load image');
+    }
+
+    final Map<String, dynamic> data = jsonDecode(response.body);
+    return data['message'] as String;
+  }
+  
+  // Helper to format breed path with sub-breed
+  String formatBreedPath(String breed, {String? subBreed}) {
+    return subBreed != null ? '$breed/$subBreed' : breed;
   }
 }
